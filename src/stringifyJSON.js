@@ -39,7 +39,6 @@ var stringifyJSON = function(obj) {
         results.push(stringifyJSON(key) + ':' + stringifyJSON(obj[key]));
       }
     }
-    console.log(results);
     return '{' + results.join(',') + '}';
   }
 };
