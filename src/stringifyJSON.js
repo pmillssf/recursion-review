@@ -18,7 +18,16 @@ var stringifyJSON = function(obj) {
     return '' + obj;
   }
   // return JSONStringified string
-
+  if (typeof obj === 'string') {
+    return '"' + obj + '"';
+  }
   // return JSONStringified array
+  if (Array.isArray(obj)) {
+    var results = [];
+    for (var i = 0; i < obj.length; i++) {
+      results.push(stringifyJSON(obj[i]));
+    }
+    return '[' + results.join(',') + ']';
+  }
   // return JSONStringified object
 };
