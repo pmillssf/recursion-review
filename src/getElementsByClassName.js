@@ -7,11 +7,17 @@
 var getElementsByClassName = function(className) {
   // your code here
   // set up a results array;
+  var results = [];
   // define a new function searchNodes
+  var searchNodes = function(node){
     // check if the node passed into the function matches the given classname
     // iterate through the child nodes of the node
     // run child node through search nodes
+
+  };
+
   //initialize the funcion by passing document.body
   //return the results array
+  return results;
 
 };
