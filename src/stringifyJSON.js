@@ -10,8 +10,15 @@ var stringifyJSON = function(obj) {
     return '' + obj;
   }
   // return JSONStringified null
+  if (obj === null) {
+    return '' + null;
+  }
   // return JSONStringified boolean
+  if (typeof obj === 'boolean') {
+    return '' + obj;
+  }
   // return JSONStringified string
+
   // return JSONStringified array
   // return JSONStringified object
 };
