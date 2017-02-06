@@ -30,4 +30,16 @@ var stringifyJSON = function(obj) {
     return '[' + results.join(',') + ']';
   }
   // return JSONStringified object
+  if (typeof obj === 'object') {
+    var results = [];
+    for (var key in obj) {
+      if (obj[key] === undefined || typeof(obj[key]) === 'function') {
+        continue;
+      } else {
+        results.push(stringifyJSON(key) + ':' + stringifyJSON(obj[key]));
+      }
+    }
+    console.log(results);
+    return '{' + results.join(',') + '}';
+  }
 };
