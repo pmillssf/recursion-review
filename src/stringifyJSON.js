@@ -6,6 +6,9 @@
 var stringifyJSON = function(obj) {
   // your code goes here
   // return JSONStringified number
+  if (typeof obj === 'number') {
+    return '' + obj;
+  }
   // return JSONStringified null
   // return JSONStringified boolean
   // return JSONStringified string
