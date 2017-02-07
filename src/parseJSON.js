@@ -8,21 +8,28 @@ var parseJSON = function(json) {
   if (json[0] === '[') {
     result = [];
   }
-  if (json[0] === '{') {
+  if (json[0] === '{' && json[json.length - 1] === '}') {
     result = {};
+    // remove original brackets, and break up object into an array of keys and values
     var objArray = json.slice(1, json.length - 1).split(':');
-    for (var i = 0; i< objArray.length-1; i++){
+    console.log(objArray);
+    for (var i = 0; i < objArray.length - 1; i++) {
+      // Evens should be keys
       var key = parseJSON(objArray[i]);
-      var value = parseJSON(objArray[i + 1].slice(1, objArray[i + 1].length));
+      // odds should be values
+      var value = parseJSON(objArray[i + 1]);
       result[key] = value;
     }
     return result;
   }
-  if (json === "\"\"") {
-    return "";
+  if (json[0] === ' ') {
+    return parseJSON(json.slice(1, json.length));
+  }
+  if (json === '\"\"') {
+    return '';
   }
   if (json[0] === '"' && json !== '\"\"') {
-    return json.slice(1,json.length-1);
+    return json.slice(1, json.length - 1);
   }
   // if json === 'null', return null
   if (json === 'null') {
